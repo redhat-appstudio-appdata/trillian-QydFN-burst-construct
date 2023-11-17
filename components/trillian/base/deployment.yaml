@@ -34,7 +34,7 @@ spec:
           value: test
         - name: MYSQL_PASSWORD
           value: zaphod
-        image: trillian-database:latest
+        image: quay.io/redhat-user-workloads/japower-tenant/trillian/trillian@sha256:754d8981d655e06fc1dad42e0397c2c0b3063ff4cb7e4ffa61dadcddca62abd9
         name: trillian-database
         ports:
         - containerPort: 3306
