@@ -1,0 +1,20 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: trillian
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: trillian
+    app.kubernetes.io/part-of: trillian
+  name: trillian2gvw
+spec:
+  path: /
+  port:
+    targetPort: 3306
+  to:
+    kind: Service
+    name: trillian
+    weight: null
+status: {}
