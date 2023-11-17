@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: trillian
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: trillian
+    app.kubernetes.io/part-of: trillian
+  name: trillian
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: trillian-database
+      app.kubernetes.io/instance: trillian
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: trillian-database
+        app.kubernetes.io/instance: trillian
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: zaphod
+        - name: MYSQL_DATABASE
+          value: test
+        - name: MYSQL_USER
+          value: test
+        - name: MYSQL_PASSWORD
+          value: zaphod
+        image: trillian-database:latest
+        name: trillian-database
+        ports:
+        - containerPort: 3306
+          name: mysql
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 10m
+            memory: 10Mi
+status: {}
